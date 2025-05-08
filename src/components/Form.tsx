@@ -42,6 +42,9 @@ const Form = () => {
           id="title"
           placeholder="Post title"
           className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+          minLength={1}
+          maxLength={100}
         />
       </div>
 
@@ -55,6 +58,9 @@ const Form = () => {
           placeholder="Write your content here..."
           rows={5}
           className="border border-gray-300 rounded px-4 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+          minLength={1}
+          maxLength={100}
         />
       </div>
 
