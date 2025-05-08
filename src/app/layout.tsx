@@ -26,10 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased grid grid-cols-5`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col md:grid md:grid-cols-5`}
       >
-        <div className="col-span-3">{children}</div>
-        <div className="col-span-2">
+        <div className="order-2 md:col-span-3 md:order-1">{children}</div>
+        <div className="order-1 md:col-span-2 md:order-2">
           <Form />
         </div>
       </body>
