@@ -10,13 +10,18 @@ export const createPost = async ({
   title: string;
   content: string;
 }) => {
-  await axios({
-    method: "POST",
-    url: "http://161.97.126.23:3001/api/posts",
-    data: { title, content },
-  });
+  try {
+    await axios({
+      method: "POST",
+      url: "http://161.97.126.23:3001/api/posts",
+      data: { title, content },
+    });
 
-  revalidatePath("/");
+    revalidatePath("/");
 
-  return null;
+    return null;
+  } catch (error) {
+    console.log("error", error);
+    return "Error creating post";
+  }
 };
