@@ -5,7 +5,7 @@ import { createPost } from "@/actions/post";
 
 const Form = () => {
   const [errors, formAction, isPending] = useActionState(
-    async (prevErrors, formData: FormData) => {
+    async (_prevErrors: string[], formData: FormData) => {
       const payload = {
         title: formData.get("title") as string,
         content: formData.get("content") as string,
@@ -17,8 +17,6 @@ const Form = () => {
     },
     []
   );
-
-  console.log("errors", errors);
 
   return (
     <form action={formAction} className="flex flex-col">
