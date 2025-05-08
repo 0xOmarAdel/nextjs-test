@@ -6,9 +6,12 @@ import { createPost } from "@/actions/post";
 const Form = () => {
   const [state, formAction, isPending] = useActionState(
     async (prevState, formData: FormData) => {
-      console.log(formData);
+      const payload = {
+        title: formData.get("title") as string,
+        content: formData.get("content") as string,
+      };
 
-      await createPost(formData);
+      await createPost(payload);
     },
     null
   );

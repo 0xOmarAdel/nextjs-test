@@ -10,10 +10,10 @@ export const createPost = async ({
   content: string;
 }) => {
   const post = await axios({
-    method: "get",
+    method: "POST",
     url: "http://161.97.126.23:3001/api/posts",
     data: { title, content },
   });
 
-  return post;
+  return null;
 };
