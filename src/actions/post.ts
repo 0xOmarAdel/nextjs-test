@@ -1,5 +1,6 @@
 "use server";
 
+import { CreatePostSchema } from "@/schemas/post";
 import axios from "axios";
 import { revalidatePath } from "next/cache";
 
@@ -11,6 +12,15 @@ export const createPost = async ({
   content: string;
 }) => {
   try {
+    const validationResult = CreatePostSchema.safeParse({ title, content });
+
+    if (!validationResult.success) {
+      return {
+        success: false,
+        errors: validationResult.error.flatten().fieldErrors,
+      };
+    }
+
     await axios({
       method: "POST",
       url: "http://161.97.126.23:3001/api/posts",
@@ -19,9 +29,9 @@ export const createPost = async ({
 
     revalidatePath("/");
 
-    return null;
+    return [];
   } catch (error) {
     console.log("error", error);
-    return "Error creating post";
+    return ["Error creating post"];
   }
 };
