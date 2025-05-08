@@ -15,7 +15,10 @@ export default async function Home() {
   return (
     <div>
       {posts.data.map((post) => (
-        <div key={post.id}>{post.title}</div>
+        <div key={post.id}>
+          <h1 className="text-xl font-bold">{post.title}</h1>
+          <p className="text-lg">{post.content}</p>
+        </div>
       ))}
     </div>
   );
