@@ -15,10 +15,9 @@ export const createPost = async ({
     const validationResult = CreatePostSchema.safeParse({ title, content });
 
     if (!validationResult.success) {
-      return {
-        success: false,
-        errors: validationResult.error.flatten().fieldErrors,
-      };
+      const fieldErrors = validationResult.error.flatten().fieldErrors;
+
+      return Object.values(fieldErrors).flat();
     }
 
     await axios({
