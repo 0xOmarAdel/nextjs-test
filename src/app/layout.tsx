@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Form from "@/components/Form";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,12 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col md:grid md:grid-cols-5`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="order-2 md:col-span-3 md:order-1">{children}</div>
-        <div className="order-1 md:col-span-2 md:order-2">
-          <Form />
-        </div>
+        {children}
       </body>
     </html>
   );
