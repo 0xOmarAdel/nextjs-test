@@ -1,16 +1,7 @@
-import axios from "axios";
-
-type Post = {
-  id: string;
-  title: string;
-  content: string;
-};
+import { getPosts } from "@/actions/post";
 
 export default async function Home() {
-  const posts: { data: Post[] } = await axios({
-    method: "GET",
-    url: "http://161.97.126.23:3001/api/posts",
-  });
+  const posts = await getPosts();
 
   return (
     <main className="min-h-screen bg-gray-100 py-10 px-4 sm:px-6 lg:px-8">
@@ -18,9 +9,9 @@ export default async function Home() {
         <h1 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
           Latest Posts
         </h1>
-        {posts.data.length > 0 ? (
+        {posts.length > 0 ? (
           <div className="space-y-6">
-            {posts.data.map((post) => (
+            {posts.map((post) => (
               <div
                 key={post.id}
                 className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
